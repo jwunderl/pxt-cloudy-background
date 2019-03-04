@@ -15,15 +15,14 @@ namespace effects {
 
             this.clouds = [
                 img`
-                    . . . . . . . . . . . f . . . .
-                    . . . . . . . . . . f 1 f . . .
+                    . . . . . . . . . . f f f . . .
                     . . . . . . . . . f 1 9 1 f . .
                     . . f . . f f . f 1 9 9 9 9 f .
                     . f 1 f f 1 1 f 9 9 1 1 1 9 1 f
                     f 1 9 1 9 9 1 9 9 1 1 1 1 9 9 f
                     f 9 1 9 9 1 9 1 1 9 1 1 1 1 1 f
                     . f 1 1 1 1 1 1 1 1 1 1 1 1 1 f
-                    f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f
+                    f f 1 1 1 1 1 1 1 1 1 1 1 1 1 f
                     . f 1 f f 1 f 1 f 1 1 f 1 1 1 f
                     . . f f . f . f . f f . f f f .
                 `, img`
@@ -53,6 +52,40 @@ namespace effects {
                     f 9 1 1 f
                     . f 1 f .
                     . . f . .
+                `, img`
+                    . . . . . f f f f f f .
+                    . . . f f 1 1 1 1 1 f f
+                    . f f f 1 9 1 1 9 1 1 f
+                    f 1 1 1 9 1 1 1 9 1 1 f
+                    f 1 1 9 1 1 1 9 1 1 1 f
+                    f 1 1 9 1 1 1 1 1 1 1 f
+                    . f 1 1 1 1 1 1 1 1 f f
+                    . . f f f f f f f f f .
+                `, img`
+                    . f f f . .
+                    f f 1 f . .
+                    f 1 1 f f f
+                    f 1 9 9 1 f
+                    f 9 1 1 1 f
+                    f 1 1 1 1 f
+                    . f 1 1 1 f
+                    . f f f f f
+                `, img`
+                    . . . . . . . . . . . . f . .
+                    . . . . . . . . . . . f f f .
+                    . . f . . . . . . . . f 1 f f
+                    . f f f . . . f f . . f 1 1 f
+                    . f 1 f . . f f f . f f 1 1 f
+                    f f 1 f f . f 1 f f f 1 1 1 f
+                    f 1 1 1 f f f 1 1 f f 1 1 1 f
+                    f f 1 1 1 f 1 1 1 f f 1 1 1 f
+                    . f f 1 9 1 1 9 1 1 1 1 1 1 f
+                    . . f 9 1 1 1 9 1 1 1 1 1 f f
+                    . . f 1 1 1 9 9 1 1 1 1 1 f .
+                    . . f 1 1 9 9 1 1 1 1 1 f . .
+                    . . f f f 1 1 1 1 f f f . . .
+                    . . . . f f 1 f f f . . . . .
+                    . . . . . f f f . . . . . . .
                 `
             ];
         }
