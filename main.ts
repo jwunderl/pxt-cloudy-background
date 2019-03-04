@@ -6,7 +6,7 @@ namespace effects {
         clouds: Image[];
         camera: scene.Camera;
 
-        constructor(anchor: particles.ParticleAnchor, minRate: number = 10, maxRate: number = 30) {
+        constructor(anchor: particles.ParticleAnchor, minRate: number = 5, maxRate: number = 10) {
             super();
 
             this.minRate = minRate;
@@ -165,7 +165,7 @@ namespace effects {
     }
 
     //% fixedInstance whenUsed block="clouds"
-    export const clouds = new ScreenEffect(0.1, 0.5, 5000, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+    export const clouds = new ScreenEffect(0.1, 0.3, 5000, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new CloudFactory(anchor);
         const source = new particles.ParticleSource(anchor, particlesPerSecond, factory);
         source.z = -5;
