@@ -1,5 +1,4 @@
 namespace effects {
-
     class CloudFactory extends particles.ParticleFactory {
         minRate: number;
         maxRate: number;
