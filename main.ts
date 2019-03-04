@@ -106,7 +106,7 @@ namespace effects {
     export const clouds = new ScreenEffect(0.1, 0.5, 5000, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new CloudFactory(anchor);
         const source = new particles.ParticleSource(anchor, particlesPerSecond, factory);
-        source.z = -1;
+        source.z = -5;
         return source;
     });
 } 
