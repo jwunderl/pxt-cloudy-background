@@ -73,7 +73,6 @@ namespace effects {
                 const selection = Math.randomRange(0, this.clouds.length - 1) << 3;
 
                 p.color = isConjoined | isOffsetX | isOffsetY | selection;
-                console.log("p" + p.color)
             }
 
             // set lifespan based off velocity and screen height (plus a little to make sure it doesn't disappear early)
