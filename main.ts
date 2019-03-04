@@ -5,7 +5,7 @@ namespace effects {
         maxRate: number;
         clouds: Image[];
 
-        constructor(anchor: particles.ParticleAnchor, minRate: number = 15, maxRate: number = 25) {
+        constructor(anchor: particles.ParticleAnchor, minRate: number = 10, maxRate: number = 30) {
             super();
 
             this.minRate = minRate;
@@ -64,6 +64,18 @@ namespace effects {
             p.vx = Fx8(-Math.randomRange(this.minRate, this.maxRate));
             p.data = Math.randomRange(0, this.clouds.length - 1);
 
+            // Using p.color as an extra image index; first bit is used to indicate it is used
+            p.color = 0;
+            if (Math.percentChance(60)) {
+                const isConjoined = 1 << 0;
+                const isOffsetX = Math.randomRange(0, 1) << 1;
+                const isOffsetY = Math.randomRange(0, 1) << 2;
+                const selection = Math.randomRange(0, this.clouds.length - 1) << 3;
+
+                p.color = isConjoined | isOffsetX | isOffsetY | selection;
+                console.log("p" + p.color)
+            }
+
             // set lifespan based off velocity and screen height (plus a little to make sure it doesn't disappear early)
             p.lifespan = Fx.toInt(Fx.mul(Fx.div(Fx8(screen.width + 60), Fx.abs(p.vx)), Fx8(1000)));
 
@@ -71,8 +83,22 @@ namespace effects {
         }
 
         drawParticle(p: particles.Particle, x: Fx8, y: Fx8) {
-            // screen.setPixel(Fx.toInt(x), Fx.toInt(y), 1);
-            screen.drawTransparentImage(this.clouds[p.data], Fx.toInt(p._x), Fx.toInt(p._y));
+            const mainImage = this.clouds[p.data];
+            screen.drawTransparentImage(mainImage, Fx.toInt(p._x), Fx.toInt(p._y));
+            if (p.color & 1) {
+                const isOffsetX = (p.color >> 1) & 1;
+                const isOffsetY = (p.color >> 2) & 1;
+                const selection = this.clouds[p.color >> 3];
+
+                const xOffset = isOffsetX ? Fx8(mainImage.width >> 1) : Fx.zeroFx8;
+                const yOffset = isOffsetY ? Fx8(mainImage.height >> 1) : Fx.zeroFx8;
+
+                screen.drawTransparentImage(
+                    selection,
+                    Fx.toInt(Fx.add(p._x, xOffset)),
+                    Fx.toInt(Fx.add(p._y, yOffset))
+                );
+            }
         }
     }
 
@@ -82,15 +108,5 @@ namespace effects {
         const source = new particles.ParticleSource(anchor, particlesPerSecond, factory);
         source.z = -1;
         return source;
-    });
-
-    /** TEST, remove this */
-    control.runInParallel(() => {
-        pause(100); // wait for scene to start
-        scene.setBackgroundColor(0x9);
-        effects.clouds.startScreenEffect();
-        const m = sprites.create(img`2`)
-        controller.moveSprite(m);
-        scene.cameraFollowSprite(m);
     });
 } 
