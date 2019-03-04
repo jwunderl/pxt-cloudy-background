@@ -4,12 +4,14 @@ namespace effects {
         minRate: number;
         maxRate: number;
         clouds: Image[];
+        camera: scene.Camera;
 
         constructor(anchor: particles.ParticleAnchor, minRate: number = 10, maxRate: number = 30) {
             super();
 
             this.minRate = minRate;
             this.maxRate = maxRate;
+            this.camera = game.currentScene().camera;
 
             this.clouds = [
                 img`
@@ -58,9 +60,14 @@ namespace effects {
         createParticle(anchor: particles.ParticleAnchor) {
             const p = super.createParticle(anchor);
             const yRange = anchor.height ? anchor.height >> 1 : 8;
-
-            p._x = Fx8(anchor.width ? anchor.x + (anchor.width >> 1) : anchor.x);
-            p._y = Fx8(Math.randomRange(anchor.y - yRange, anchor.y + yRange));
+            p._x = Fx.sub(
+                Fx8(anchor.width ? anchor.x + (anchor.width >> 1) : anchor.x),
+                Fx8(this.camera.offsetX)
+            );
+            p._y = Fx.sub(
+                Fx8(Math.randomRange(anchor.y - yRange, anchor.y + yRange)),
+                Fx8(this.camera.offsetY)
+            );
             p.vx = Fx8(-Math.randomRange(this.minRate, this.maxRate));
             p.data = Math.randomRange(0, this.clouds.length - 1);
 
@@ -76,14 +83,19 @@ namespace effects {
             }
 
             // set lifespan based off velocity and screen height (plus a little to make sure it doesn't disappear early)
-            p.lifespan = Fx.toInt(Fx.mul(Fx.div(Fx8(screen.width + 60), Fx.abs(p.vx)), Fx8(1000)));
+            p.lifespan = Fx.toInt(Fx.mul(Fx.div(Fx8(screen.width + 30), Fx.abs(p.vx)), Fx8(1000)));
 
             return p;
         }
 
         drawParticle(p: particles.Particle, x: Fx8, y: Fx8) {
             const mainImage = this.clouds[p.data];
-            screen.drawTransparentImage(mainImage, Fx.toInt(p._x), Fx.toInt(p._y));
+            screen.drawTransparentImage(
+                mainImage,
+                Fx.toInt(p._x),
+                Fx.toInt(p._y)
+            );
+
             if (p.color & 1) {
                 const isOffsetX = (p.color >> 1) & 1;
                 const isOffsetY = (p.color >> 2) & 1;
@@ -94,8 +106,18 @@ namespace effects {
 
                 screen.drawTransparentImage(
                     selection,
-                    Fx.toInt(Fx.add(p._x, xOffset)),
-                    Fx.toInt(Fx.add(p._y, yOffset))
+                    Fx.toInt(
+                        Fx.add(
+                            p._x,
+                            xOffset
+                        )
+                    ),
+                    Fx.toInt(
+                        Fx.add(
+                            p._y,
+                            yOffset
+                        )
+                    )
                 );
             }
         }

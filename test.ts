@@ -8,4 +8,7 @@ control.runInParallel(() => {
     const m = sprites.create(img`2`)
     controller.moveSprite(m);
     scene.cameraFollowSprite(m);
+    game.onUpdate(function () {
+        m.say("x" + m.x + " y" + m.y)
+    })
 });
