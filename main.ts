@@ -83,7 +83,15 @@ namespace effects {
             }
 
             // set lifespan based off velocity and screen height (plus a little to make sure it doesn't disappear early)
-            p.lifespan = Fx.toInt(Fx.mul(Fx.div(Fx8(screen.width + 30), Fx.abs(p.vx)), Fx8(1000)));
+            p.lifespan = Fx.toInt(
+                Fx.mul(
+                    Fx.div(
+                        Fx8(screen.width + 30),
+                        Fx.abs(p.vx)
+                    ),
+                    Fx8(1000)
+                )
+            );
 
             return p;
         }
