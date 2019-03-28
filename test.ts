@@ -2,7 +2,7 @@
 control.runInParallel(() => {
     pause(0); // requeue this to wait for scene to start
     scene.setBackgroundColor(0x9);
-    effects.clouds.startScreenEffect();
+    effects.jw.clouds.startScreenEffect();
     const m = sprites.create(img`2`)
     controller.moveSprite(m);
     scene.cameraFollowSprite(m);

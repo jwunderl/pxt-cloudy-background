@@ -1,4 +1,4 @@
-namespace effects {
+namespace effects.jw {
     class CloudFactory extends particles.ParticleFactory {
         minRate: number;
         maxRate: number;
