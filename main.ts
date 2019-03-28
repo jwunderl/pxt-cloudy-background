@@ -5,7 +5,7 @@ namespace effects {
         clouds: Image[];
         camera: scene.Camera;
 
-        constructor(anchor: particles.ParticleAnchor, minRate: number = 5, maxRate: number = 10) {
+        constructor(anchor: particles.ParticleAnchor, minRate: number = 8, maxRate: number = 12) {
             super();
 
             this.minRate = minRate;
@@ -15,50 +15,50 @@ namespace effects {
             this.clouds = [
                 img`
                     . . . . . . . . . . f f f . . .
-                    . . . . . . . . . f 1 9 1 f . .
-                    . . f . . f f . f 1 9 9 9 9 f .
-                    . f 1 f f 1 1 f 9 9 1 1 1 9 1 f
+                    . . . . . . . . . f f 9 f f . .
+                    . f f f . f f f . f 9 9 9 f f .
+                    f f 1 f f f 1 f f f 1 1 1 9 f f
                     f 1 9 1 9 9 1 9 9 1 1 1 1 9 9 f
                     f 9 1 9 9 1 9 1 1 9 1 1 1 1 1 f
-                    . f 1 1 1 1 1 1 1 1 1 1 1 1 1 f
                     f f 1 1 1 1 1 1 1 1 1 1 1 1 1 f
-                    . f 1 f f 1 f 1 f 1 1 f 1 1 1 f
-                    . . f f . f . f . f f . f f f .
+                    . f 1 1 1 1 9 9 1 f f f 1 1 1 f
+                    . f 1 f f f 9 f f f . f f 1 f f
+                    . f f f . f f f . . . . f f f .
                 `, img`
-                    . . . . . . f f . . . .
-                    . . . f . f 1 1 f . . .
-                    . f f 1 f 1 9 9 1 f . .
-                    f 1 1 1 1 1 1 1 9 f f .
+                    . . . . . f f f f f . .
+                    . . f f . f 1 1 1 f f .
+                    f f f 1 f f 9 9 1 1 f .
+                    f 9 9 1 1 1 1 1 9 9 f f
                     . f 1 9 9 1 9 1 1 1 1 f
-                    f 1 1 f f 1 1 1 1 1 f .
-                    . f f . f 1 f 1 f f . .
-                    . . . . . f . f . . . .
+                    f 1 f f f 1 1 1 1 9 9 f
+                    f f f . f f f f 9 f f f
+                    . . . . . . . f f f . .
                 `, img`
-                    . . . . . . . . f f . f f f
-                    . . f . . . . f 1 1 f 1 1 f
-                    . f 1 f . . . f 1 9 9 f 1 f
-                    f 1 1 1 f . f 1 1 1 1 1 1 f
-                    f 1 9 1 f f 1 1 9 1 1 1 1 f
-                    f 1 1 9 1 1 1 9 1 1 1 1 1 f
-                    . f 1 9 1 1 9 9 1 1 1 1 f .
-                    . . f 1 1 9 9 1 1 1 1 f . .
-                    . . f 1 1 1 1 1 1 f f . . .
-                    . . . f 1 1 1 f f f . . . .
-                    . . . . f f f . . . . . . .
+                    . . . . . . . . f f f . .
+                    . . . . . . . f f 1 f . .
+                    . f f f . . . f 1 9 f f .
+                    f f 1 f f . f f 1 1 1 f f
+                    f 1 9 1 f f f 1 9 1 1 1 f
+                    f f 1 9 1 1 1 9 1 1 1 1 f
+                    . f f 9 1 1 9 9 1 1 1 f f
+                    . . f 1 1 9 9 1 1 1 f f .
+                    . . f f 1 1 1 1 1 f f . .
+                    . . . f f 1 f f f f . . .
+                    . . . . f f f . . . . . .
                 `, img`
                     . f f f .
                     f 1 9 1 f
                     f 9 1 1 f
-                    . f 1 f .
-                    . . f . .
+                    f f 1 f f
+                    . f f f .
                 `, img`
                     . . . . . f f f f f f .
-                    . . . f f 1 1 1 1 1 f f
+                    . . . f f f 1 1 1 1 f f
                     . f f f 1 9 1 1 9 1 1 f
-                    f 1 1 1 9 1 1 1 9 1 1 f
+                    f f 1 1 9 1 1 1 9 1 1 f
                     f 1 1 9 1 1 1 9 1 1 1 f
-                    f 1 1 9 1 1 1 1 1 1 1 f
-                    . f 1 1 1 1 1 1 1 1 f f
+                    f f 1 9 1 1 1 1 1 1 1 f
+                    . f f 1 1 1 1 1 1 1 f f
                     . . f f f f f f f f f .
                 `, img`
                     . f f f . .
@@ -66,23 +66,23 @@ namespace effects {
                     f 1 1 f f f
                     f 1 9 9 1 f
                     f 9 1 1 1 f
-                    f 1 1 1 1 f
+                    f f 1 1 1 f
                     . f 1 1 1 f
                     . f f f f f
                 `, img`
-                    . . . . . . . . . . . . f . .
-                    . . . . . . . . . . . f f f .
-                    . . . . . . . . . . . f 1 f f
-                    . f f f . . . f f . . f 1 1 f
-                    . f 1 f . . f f f . f f 1 1 f
-                    f f 1 f f . f 1 f f f 1 1 1 f
-                    f 1 1 1 f f f 1 1 f f 1 1 1 f
-                    f f 1 1 1 f 1 1 1 f f 1 1 1 f
+                    . . . . . . . . . . . . . . .
+                    . . . . . . . . . . . . . . .
+                    . . . . . . . . . . . . . . .
+                    . . . . . . . . . . . . f f f
+                    . . . . . . . . . . f f f 1 f
+                    f f f f f . f f f . f 1 1 1 f
+                    f 1 1 1 f f f 1 f . f 1 1 1 f
+                    f f 1 1 1 f 1 1 f f f 1 1 1 f
                     . f f 1 9 1 1 9 1 1 1 1 1 1 f
                     . . f 9 1 1 1 9 1 1 1 1 1 f f
                     . . f 1 1 1 9 9 1 1 1 1 1 f .
-                    . . f 1 1 9 9 1 1 1 1 1 f . .
-                    . . f f f 1 1 1 1 f f f . . .
+                    . . f 1 1 9 9 1 1 1 1 1 f f .
+                    . . f f f 1 1 1 1 f f f f . .
                     . . . . f f 1 f f f . . . . .
                     . . . . . f f f . . . . . . .
                 `
@@ -92,20 +92,20 @@ namespace effects {
         createParticle(anchor: particles.ParticleAnchor) {
             const p = super.createParticle(anchor);
             const yRange = anchor.height ? anchor.height >> 1 : 8;
+            p.data = Math.randomRange(0, this.clouds.length - 1);
             p._x = Fx.sub(
                 Fx8(anchor.width ? anchor.x + (anchor.width >> 1) : anchor.x),
                 Fx8(this.camera.offsetX)
             );
             p._y = Fx.sub(
                 Fx8(Math.randomRange(anchor.y - yRange, anchor.y + yRange)),
-                Fx8(this.camera.offsetY)
+                Fx8(this.camera.offsetY - (this.clouds[p.data].width >> 1))
             );
             p.vx = Fx8(-Math.randomRange(this.minRate, this.maxRate));
-            p.data = Math.randomRange(0, this.clouds.length - 1);
 
-            // Using p.color as an extra image index; first bit is used to indicate it is used
+            // p.color stores information on conjoined clouds
             p.color = 0;
-            if (Math.percentChance(60)) {
+            if (Math.percentChance(30)) {
                 const isConjoined = 1 << 0;
                 const isOffsetX = Math.randomRange(0, 1) << 1;
                 const isOffsetY = Math.randomRange(0, 1) << 2;
@@ -141,8 +141,8 @@ namespace effects {
                 const isOffsetY = (p.color >> 2) & 1;
                 const selection = this.clouds[p.color >> 3];
 
-                const xOffset = isOffsetX ? Fx8(mainImage.width >> 1) : Fx.zeroFx8;
-                const yOffset = isOffsetY ? Fx8(mainImage.height >> 1) : Fx.zeroFx8;
+                const xOffset = isOffsetX ? Fx8(mainImage.width >> 2) : Fx.zeroFx8;
+                const yOffset = isOffsetY ? Fx8(mainImage.height >> 2) : Fx.zeroFx8;
 
                 screen.drawTransparentImage(
                     selection,
@@ -164,10 +164,10 @@ namespace effects {
     }
 
     //% fixedInstance whenUsed block="clouds"
-    export const clouds = new ScreenEffect(0.1, 0.3, 5000, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+    export const clouds = new ScreenEffect(0.2, 0.5, 5000, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new CloudFactory(anchor);
         const source = new particles.ParticleSource(anchor, particlesPerSecond, factory);
-        source.z = -5;
+        source.z = -1;
         return source;
     });
 } 
